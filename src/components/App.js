@@ -2,9 +2,26 @@ import React, { useState } from 'react'
 import '../styles/App.css';
 
 const App = () => {
-  const [rating, setRating] = useState();
+  const [rating, setRating] = useState(5);
   const [comment, setComment] = useState();
   const [commentError, setCommentError] = useState();
+
+    const handleRatingChange = (e) => {
+    setRating(e.target.value);
+  }
+
+  const handleCommentChange = (e) => {
+    setComment(e.target.value);
+    if (e.target.value.length > 5) {
+      setCommentError('');
+    } else {
+      setCommentError('Comment must be at least 5 characters');
+    }
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  }
 
   return (
     <div id="main">
